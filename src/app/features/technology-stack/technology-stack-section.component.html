@@ -1,0 +1,46 @@
+<section class="content-section section-frame" id="stack" aria-labelledby="stack-title">
+  <div class="section-heading">
+    <div class="eyebrow"><span class="eyebrow-line"></span> TOOLCHAIN <span>06 / 06</span></div>
+    <div class="section-title-row">
+      <h2 id="stack-title">Technology<br /><span>Stack</span></h2>
+      <p class="section-intro">
+        Ferramentas e conceitos que fazem parte do meu repertório de engenharia.
+      </p>
+    </div>
+  </div>
+  <div class="stack-layout">
+    <div class="stack-groups">
+      @for (group of technologyGroups; track group.label; let index = $index) {
+        <article class="stack-group">
+          <div class="stack-group-index">0{{ index + 1 }}</div>
+          <div class="stack-group-content">
+            <div class="stack-group-heading">
+              <h3>{{ group.label }}</h3>
+              <span>{{ group.description }}</span>
+            </div>
+            <div class="technology-list">
+              @for (technology of group.items; track technology) {
+                <span>{{ technology }}</span>
+              }
+            </div>
+          </div>
+        </article>
+      }
+    </div>
+    <aside class="principles-panel">
+      <div class="principles-heading">
+        <span class="case-label">ENGINEERING PRINCIPLES</span
+        ><span class="principles-code">GH / 07</span>
+      </div>
+      @for (principle of principles; track principle.name; let index = $index) {
+        <div class="principle-row">
+          <span class="principle-index">0{{ index + 1 }}</span>
+          <div>
+            <h3>{{ principle.name }}</h3>
+            <p>{{ principle.description }}</p>
+          </div>
+        </div>
+      }
+    </aside>
+  </div>
+</section>

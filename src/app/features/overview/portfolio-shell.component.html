@@ -1,0 +1,90 @@
+<div class="site-shell" [class.theme-light]="isLightTheme()" [class.menu-open]="isMenuOpen()">
+  <a class="skip-link" href="#main-content">Pular para o conteúdo</a>
+
+  <header class="site-header">
+    <a class="brand" href="#overview" aria-label="Gabriel Henrique — início" (click)="closeMenu()">
+      <span class="brand-mark">GH</span>
+      <span class="brand-divider"></span>
+      <span class="brand-label">SOFTWARE<br />ENGINEERING</span>
+    </a>
+    <nav class="primary-nav" id="primary-navigation" aria-label="Navegação principal">
+      <a href="#overview" (click)="closeMenu()">Overview</a>
+      <a href="#experience" (click)="closeMenu()">Experience</a>
+      <a href="#architecture" (click)="closeMenu()">Architecture</a>
+      <a href="#projects" (click)="closeMenu()">Projects</a>
+      <a href="#stack" (click)="closeMenu()">Stack</a>
+      <a href="#contact" (click)="closeMenu()">Contact</a>
+    </nav>
+    <div class="header-actions">
+      <div class="availability"><span class="status-dot"></span>Available for opportunities</div>
+      <button
+        class="theme-toggle"
+        type="button"
+        [attr.aria-label]="isLightTheme() ? 'Ativar tema escuro' : 'Ativar tema claro'"
+        (click)="toggleTheme()"
+      >
+        @if (isLightTheme()) {
+          <svg lucideMoon size="16"></svg>
+        } @else {
+          <svg lucideSun size="16"></svg>
+        }
+      </button>
+      <button
+        class="menu-toggle"
+        type="button"
+        [attr.aria-expanded]="isMenuOpen()"
+        aria-controls="primary-navigation"
+        [attr.aria-label]="isMenuOpen() ? 'Fechar menu' : 'Abrir menu'"
+        (click)="toggleMenu()"
+      >
+        @if (isMenuOpen()) {
+          <svg lucideX size="18"></svg>
+        } @else {
+          <svg lucideMenu size="18"></svg>
+        }
+      </button>
+    </div>
+  </header>
+
+  <main id="main-content">
+    <app-engineering-profile></app-engineering-profile>
+    <app-engineering-overview></app-engineering-overview>
+
+    <section
+      class="architecture-section section-frame"
+      id="architecture"
+      aria-labelledby="architecture-title"
+    >
+      <div class="section-heading">
+        <div class="eyebrow">
+          <span class="eyebrow-line"></span> SYSTEM DESIGN <span>03 / 06</span>
+        </div>
+        <div class="section-title-row">
+          <h2 id="architecture-title">Architecture<br /><span>Lab</span></h2>
+          <p class="section-intro">
+            Diagramas exploráveis para entender responsabilidades e caminhos de execução — não
+            apenas caixas e setas.
+          </p>
+        </div>
+      </div>
+      <app-architecture-lab></app-architecture-lab>
+      <div class="architecture-footnote">
+        <span>NOTE</span> Diagramas conceituais; representam padrões, não afirmam que todos estejam
+        implementados no projeto em destaque.
+      </div>
+    </section>
+
+    <app-experience-section></app-experience-section>
+    <app-projects-section></app-projects-section>
+    <app-technology-stack-section></app-technology-stack-section>
+    <app-contact-section></app-contact-section>
+  </main>
+
+  <footer class="site-footer section-frame">
+    <a href="#overview" class="footer-brand"
+      ><span class="brand-mark">GH</span><span>BACK TO TOP ↑</span></a
+    >
+    <span>Designed around systems, not slogans.</span>
+    <a href="#overview">PORTFÓLIO TÉCNICO <span>·</span> 2026</a>
+  </footer>
+</div>

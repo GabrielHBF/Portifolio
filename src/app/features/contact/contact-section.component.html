@@ -1,0 +1,49 @@
+<section class="contact-section section-frame" id="contact" aria-labelledby="contact-title">
+  <div class="contact-terminal">
+    <div class="terminal-topbar">
+      <div class="window-controls"><i></i><i></i><i></i></div>
+      <span>gabriel-henrique / contact</span>
+      <span class="terminal-branch">main</span>
+    </div>
+    <div class="terminal-content">
+      <div class="eyebrow"><span class="eyebrow-line"></span> OPEN CHANNEL <span>READY</span></div>
+      <div class="terminal-prompt"><span>$</span> connect --with-purpose</div>
+      <h2 id="contact-title">Let's build something<br /><span>meaningful.</span></h2>
+      <p>
+        Se você está construindo um produto, explorando uma ideia ou resolvendo um desafio técnico,
+        vamos conversar.
+      </p>
+      <div class="contact-links">
+        <a [href]="profile.github" target="_blank" rel="noopener noreferrer">
+          <span>GitHub</span><span>github.com/GabrielHBF</span
+          ><svg lucideArrowUpRight size="15"></svg>
+        </a>
+        <a [href]="profile.linkedin" target="_blank" rel="noopener noreferrer">
+          <span>LinkedIn</span><span>linkedin.com</span><svg lucideArrowUpRight size="15"></svg>
+        </a>
+        @if (profile.email) {
+          <a [href]="'mailto:' + profile.email">
+            <span>E-mail</span><span>{{ profile.email }}</span
+            ><svg lucideArrowUpRight size="15"></svg>
+          </a>
+          <button class="copy-email" type="button" (click)="copyEmail()">
+            <svg lucideCopy size="14"></svg> Copiar endereço
+          </button>
+        } @else {
+          <div class="email-not-configured">
+            <span>E-mail</span>
+            <span>Configure <code>email</code> em <code>src/app/data/profile.ts</code></span>
+          </div>
+        }
+      </div>
+      <p class="copy-status" aria-live="polite">
+        @if (copyStatus()) {
+          <svg lucideCheck size="13"></svg> {{ copyStatus() }}
+        }
+      </p>
+    </div>
+    <div class="terminal-bottom">
+      <span>GABRIEL HENRIQUE</span><span>SOFTWARE ENGINEERING · BRAZIL</span><span>© 2026</span>
+    </div>
+  </div>
+</section>

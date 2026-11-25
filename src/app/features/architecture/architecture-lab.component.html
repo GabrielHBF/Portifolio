@@ -1,0 +1,75 @@
+<div class="architecture-workbench">
+  <div class="diagram-sidebar">
+    <div class="sidebar-label">PATTERNS / 04</div>
+    @for (diagram of diagrams; track diagram.id; let index = $index) {
+    <button class="diagram-option" [class.is-active]="activeDiagramId() === diagram.id"
+      [attr.aria-pressed]="activeDiagramId() === diagram.id" (click)="selectDiagram(diagram.id)">
+      <span class="diagram-option-number">0{{ index + 1 }}</span>
+      <span>{{ diagram.label }}</span>
+      @if (activeDiagramId() === diagram.id) {
+      <svg lucideArrowUpRight size="14"></svg>
+      }
+    </button>
+    }
+    <div class="sidebar-note">
+      <span class="status-dot"></span>
+      Select a node to inspect its responsibility.
+    </div>
+  </div>
+
+  <div class="diagram-stage">
+    <div class="diagram-stage-header">
+      <span>{{ activeDiagram().eyebrow }}</span>
+      <span class="diagram-stage-index">FIG. 0{{ diagrams.indexOf(activeDiagram()) + 1 }}</span>
+    </div>
+
+    <div class="diagram-canvas">
+      <svg class="architecture-svg" viewBox="0 0 488 430" role="group"
+        [attr.aria-label]="activeDiagram().label + ' architecture diagram'">
+        <defs>
+          <pattern id="diagram-grid" width="22" height="22" patternUnits="userSpaceOnUse">
+            <path d="M 22 0 L 0 0 0 22" fill="none" class="grid-stroke"></path>
+          </pattern>
+          <marker id="diagram-arrow" viewBox="0 0 8 8" refX="6" refY="4" markerWidth="5" markerHeight="5"
+            orient="auto-start-reverse">
+            <path d="M 0 0 L 8 4 L 0 8 z" class="arrow-fill"></path>
+          </marker>
+        </defs>
+        <rect width="488" height="430" fill="url(#diagram-grid)"></rect>
+        @for (edge of activeDiagram().edges; track edge.id) {
+        <path class="diagram-edge" [attr.d]="edge.path" marker-end="url(#diagram-arrow)"></path>
+        }
+        @for (node of activeDiagram().nodes; track node.id) {
+        <g class="diagram-node" [class.is-selected]="activeNodeId() === node.id"
+          [attr.transform]="'translate(' + node.x + ' ' + node.y + ')'" role="button" tabindex="0"
+          [attr.aria-label]="node.title + ': ' + node.description" [attr.aria-pressed]="activeNodeId() === node.id"
+          (click)="selectNode(node.id)" (keydown.enter)="selectNode(node.id)"
+          (keydown.space)="$event.preventDefault(); selectNode(node.id)">
+          <rect [attr.width]="node.width" height="52" rx="5"></rect>
+          <text x="12" y="22" class="node-title">{{ node.title }}</text>
+          <text x="12" y="38" class="node-subtitle">{{ node.subtitle }}</text>
+          <circle [attr.cx]="node.width - 12" cy="13" r="2.5" class="node-indicator"></circle>
+        </g>
+        }
+      </svg>
+    </div>
+
+    <div class="diagram-caption">
+      <span class="caption-index">↳</span>
+      <p>{{ activeDiagram().summary }}</p>
+    </div>
+  </div>
+
+  <aside class="node-inspector" aria-live="polite">
+    <div class="inspector-label">COMPONENT INSPECTOR</div>
+    <div class="inspector-path">architecture / {{ activeNode().id }}</div>
+    <div class="inspector-title">{{ activeNode().title }}</div>
+    <div class="inspector-subtitle">{{ activeNode().subtitle }}</div>
+    <p class="inspector-description">{{ activeNode().description }}</p>
+    <div class="inspector-divider"></div>
+    <div class="inspector-footnote">
+      <span class="status-dot"></span>
+      {{ activeDiagram().label }} · interactive model
+    </div>
+  </aside>
+</div>

@@ -1,0 +1,34 @@
+<section class="content-section section-frame" id="experience" aria-labelledby="experience-title">
+  <div class="section-heading">
+    <div class="eyebrow"><span class="eyebrow-line"></span> PRACTICE LOG <span>04 / 06</span></div>
+    <div class="section-title-row">
+      <h2 id="experience-title">Engineering<br /><span>Experience</span></h2>
+    </div>
+  </div>
+  <div class="experience-list">
+    @for (practice of engineeringPractice; track practice.number) {
+    <article class="experience-row">
+      <div class="experience-index">
+        <span>{{ practice.number }}</span><span class="experience-index-line"></span>
+      </div>
+      <div class="experience-main">
+        <div class="experience-heading">
+          <h3>{{ practice.title }}</h3>
+          <span class="experience-label">ENGINEERING PRACTICE</span>
+        </div>
+        <p class="experience-focus">{{ practice.focus }}</p>
+        <ul>
+          @for (detail of practice.details; track detail) {
+          <li>{{ detail }}</li>
+          }
+        </ul>
+      </div>
+      <div class="experience-tags">
+        @for (tag of practice.tags; track tag) {
+        <span>{{ tag }}</span>
+        }
+      </div>
+    </article>
+    }
+  </div>
+</section>

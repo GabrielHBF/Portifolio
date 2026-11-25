@@ -1,0 +1,79 @@
+<section class="hero section-frame" id="overview" aria-labelledby="hero-title">
+  <div class="hero-copy">
+    <div class="eyebrow">
+      <span class="eyebrow-line"></span> ENGINEERING PROFILE <span>01 / 06</span>
+    </div>
+    <div class="hero-heading">
+      <p class="hero-kicker">Backend Developer <span>/</span> .NET & Artificial Intelligence</p>
+      <h1 id="hero-title">Gabriel<br /><span>Henrique.</span></h1>
+    </div>
+    <p class="hero-description">
+      Desenvolvendo soluções backend, arquiteturas distribuídas e aplicações inteligentes. Meu foco
+      está na construção de sistemas bem estruturados, integrações confiáveis e soluções orientadas
+      a problemas reais.
+    </p>
+    <div class="hero-actions">
+      <a class="button button-primary" href="#projects">
+        Explorar projetos <svg lucideArrowRight size="15"></svg>
+      </a>
+      <a class="button button-quiet" href="#contact">
+        Currículo sob consulta <svg lucideArrowUpRight size="14"></svg>
+      </a>
+    </div>
+    <div class="hero-socials" aria-label="Links profissionais">
+      <a [href]="profile.github" target="_blank" rel="noopener noreferrer">
+        <span class="social-monogram">GH</span> GitHub <svg lucideArrowUpRight size="12"></svg>
+      </a>
+      <a [href]="profile.linkedin" target="_blank" rel="noopener noreferrer">
+        LinkedIn <svg lucideArrowUpRight size="12"></svg>
+      </a>
+      <span class="hero-social-separator"></span>
+      <span class="hero-social-note">PORTFÓLIO TÉCNICO · 2026</span>
+    </div>
+  </div>
+
+  <div class="hero-visual">
+    <div class="visual-toolbar">
+      <div class="window-controls"><i></i><i></i><i></i></div>
+      <span>system-flow.svg</span>
+      <span class="toolbar-state"><span class="status-dot"></span> LIVE</span>
+    </div>
+    <div class="flow-canvas">
+      <div class="flow-coordinate">FIG 01 — REQUEST LIFECYCLE</div>
+      <div class="flow-node flow-node-client">
+        <span class="flow-node-icon"><svg lucideArrowDown size="14"></svg></span>
+        <span class="flow-node-copy"><strong>CLIENT</strong><small>request source</small></span>
+        <span class="flow-node-meta">01</span>
+      </div>
+      <div class="flow-connector"><span></span></div>
+      <div class="flow-node flow-node-api">
+        <span class="flow-node-icon flow-icon-blue"><svg lucideArrowRight size="14"></svg></span>
+        <span class="flow-node-copy"><strong>REST API</strong><small>HTTP boundary</small></span>
+        <span class="flow-node-meta">02</span>
+      </div>
+      <div class="flow-connector"><span></span></div>
+      <div class="flow-node flow-node-app">
+        <span class="flow-node-icon flow-icon-violet"><svg lucideArrowRight size="14"></svg></span>
+        <span class="flow-node-copy"
+          ><strong>BUSINESS LOGIC</strong><small>application layer</small></span
+        >
+        <span class="flow-node-meta">03</span>
+      </div>
+      <div class="flow-connector"><span></span></div>
+      <div class="flow-node flow-node-service">
+        <span class="flow-node-icon flow-icon-muted"><svg lucideArrowRight size="14"></svg></span>
+        <span class="flow-node-copy"
+          ><strong>SERVICES</strong><small>integrations & use cases</small></span
+        >
+        <span class="flow-node-meta">04</span>
+      </div>
+      <div class="flow-connector flow-connector-split"><span></span></div>
+      <div class="flow-endpoints">
+        <div class="flow-endpoint"><span class="endpoint-mark endpoint-db"></span> DATABASE</div>
+        <div class="flow-endpoint"><span class="endpoint-mark endpoint-ai"></span> AI / LLM</div>
+      </div>
+      <div class="flow-footnote"><span>TRACE</span> <span>HTTP → DOMAIN → INTEGRATIONS</span></div>
+    </div>
+  </div>
+  <a class="scroll-cue" href="#engineering-overview"><span></span> SCROLL TO EXPLORE</a>
+</section>
