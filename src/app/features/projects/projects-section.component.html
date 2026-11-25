@@ -10,78 +10,100 @@
     </div>
   </div>
   @for (project of projects; track project.name) {
-  <article class="case-study">
-    <div class="case-header">
-      <div>
-        <div class="case-category"><span class="status-dot"></span>{{ project.category }}</div>
-        <h3>{{ project.name }}</h3>
-      </div>
-      <a class="repo-link" [href]="project.repository" target="_blank" rel="noopener noreferrer">
-        Repository <svg lucideArrowUpRight size="15"></svg>
-      </a>
-    </div>
-    <div class="case-body">
-      <div class="case-narrative">
-        <div class="case-block">
-          <span class="case-label">01 / PROJECT OVERVIEW</span>
-          <p>{{ project.overview }}</p>
-        </div>
-        <div class="case-block">
-          <span class="case-label">02 / PROBLEM SPACE</span>
-          <p>{{ project.problem }}</p>
-        </div>
-        <div class="case-block">
-          <span class="case-label">03 / TECHNICAL APPROACH</span>
-          <p>{{ project.approach }}</p>
-        </div>
-      </div>
-      <div class="case-implementation">
-        <div class="code-window">
-          <div class="code-window-bar">
-            <span><i></i><i></i><i></i></span>
-            <span>Program.cs</span>
-            <span>APPLICATION STARTUP</span>
+    <article class="case-study">
+      <div class="case-header">
+        <div class="case-heading">
+          @if (project.image; as image) {
+            <img
+              class="project-icon"
+              [src]="image.url"
+              [alt]="image.alt"
+              loading="lazy"
+              decoding="async"
+            />
+          }
+          <div class="case-heading-copy">
+            <div class="case-category"><span class="status-dot"></span>{{ project.category }}</div>
+            <h3>{{ project.name }}</h3>
           </div>
-          <pre aria-label="Fluxo de configuração da aplicação"><code><span class="syntax-muted">builder</span>.Services
-  .AddProblemDetails()
-  .AddHttpClients(applicationSettings)
-  .AddMongo(applicationSettings.MongoSettings)
-  .AddKernelPlugins(applicationSettings)
-  .AddMediator()
-  .AddAgents()
-  .AddControllers();
-
-app.MapControllers();</code></pre>
         </div>
-        <div class="implementation-list">
-          @for (item of project.implementation; track item) {
-          <div><span class="implementation-bullet"></span>{{ item }}</div>
+        <div class="case-links">
+          <a
+            class="repo-link"
+            [href]="project.repository"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            Repository <svg lucideArrowUpRight size="15"></svg>
+          </a>
+          @if (project.resourceLink; as resourceLink) {
+            <a
+              class="repo-link"
+              [href]="resourceLink.url"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              {{ resourceLink.label }} <svg lucideArrowUpRight size="15"></svg>
+            </a>
           }
         </div>
       </div>
-    </div>
-    <div class="case-footer">
-      <div class="case-meta-group">
-        <span class="case-label">ARCHITECTURE</span>
-        <div class="case-meta-values">
-          @for (item of project.architecture; track item) {
-          <span>{{ item }}</span>
+      <div class="case-body">
+        <div class="case-narrative">
+          <div class="case-block">
+            <span class="case-label">01 / PROJECT OVERVIEW</span>
+            <p>{{ project.overview }}</p>
+          </div>
+          <div class="case-block">
+            <span class="case-label">02 / PROBLEM SPACE</span>
+            <p>{{ project.problem }}</p>
+          </div>
+          <div class="case-block">
+            <span class="case-label">03 / TECHNICAL APPROACH</span>
+            <p>{{ project.approach }}</p>
+          </div>
+        </div>
+        <div class="case-implementation">
+          @if (project.codeSample; as codeSample) {
+            <div class="code-window">
+              <div class="code-window-bar">
+                <span><i></i><i></i><i></i></span>
+                <span>{{ codeSample.fileName }}</span>
+                <span>{{ codeSample.label }}</span>
+              </div>
+              <pre [attr.aria-label]="'Código de ' + codeSample.fileName">
+                <code [textContent]="codeSample.content"></code>
+              </pre>
+            </div>
           }
+          <div class="implementation-list">
+            @for (item of project.implementation; track item) {
+              <div><span class="implementation-bullet"></span>{{ item }}</div>
+            }
+          </div>
         </div>
       </div>
-      <div class="case-meta-group">
-        <span class="case-label">TECHNOLOGIES</span>
-        <div class="case-meta-values">
-          @for (technology of project.technologies; track technology) {
-          <span>{{ technology }}</span>
-          }
+      <div class="case-footer">
+        <div class="case-meta-group">
+          <span class="case-label">ARCHITECTURE</span>
+          <div class="case-meta-values">
+            @for (item of project.architecture; track item) {
+              <span>{{ item }}</span>
+            }
+          </div>
+        </div>
+        <div class="case-meta-group">
+          <span class="case-label">TECHNOLOGIES</span>
+          <div class="case-meta-values">
+            @for (technology of project.technologies; track technology) {
+              <span>{{ technology }}</span>
+            }
+          </div>
         </div>
       </div>
-    </div>
-    <p class="case-disclaimer">
-      Observações baseadas nos arquivos públicos da branch principal. CQRS, RAG e outros padrões
-      conceituais não são atribuídos a esta implementação sem confirmação no código.
-    </p>
-  </article>
+      <p class="case-disclaimer">
+        Descrição sintetizada a partir do README, dos metadados e do código público do repositório.
+      </p>
+    </article>
   }
 </section>

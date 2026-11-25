@@ -1175,6 +1175,27 @@ a:focus-visible,
   border-bottom: 1px solid var(--line);
 }
 
+.case-heading {
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  gap: 15px;
+}
+
+.case-heading-copy {
+  min-width: 0;
+}
+
+.project-icon {
+  width: 52px;
+  height: 52px;
+  flex: 0 0 auto;
+  border: 1px solid var(--line);
+  border-radius: 5px;
+  object-fit: cover;
+  background: var(--surface-raised);
+}
+
 .case-category {
   display: flex;
   align-items: center;
@@ -1207,8 +1228,17 @@ a:focus-visible,
   transition: color 150ms ease;
 }
 
+.case-links {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 14px;
+}
+
 .case-body {
   display: grid;
+  min-width: 0;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
   gap: 30px;
   padding: 25px 23px 26px;
@@ -1216,6 +1246,7 @@ a:focus-visible,
 
 .case-narrative {
   display: grid;
+  min-width: 0;
   align-content: start;
   gap: 21px;
 }
@@ -1244,7 +1275,7 @@ a:focus-visible,
 .code-window-bar {
   display: grid;
   min-height: 34px;
-  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-columns: auto minmax(0, 1fr) minmax(0, 1fr);
   align-items: center;
   padding: 0 11px;
   border-bottom: 1px solid var(--line);
@@ -1258,9 +1289,12 @@ a:focus-visible,
 }
 
 .code-window-bar > span:last-child {
+  overflow: hidden;
   text-align: right;
+  text-overflow: ellipsis;
   color: var(--subtle);
   font-size: 7px;
+  white-space: nowrap;
 }
 
 .code-window-bar > span:first-child i:first-child {
@@ -1323,12 +1357,15 @@ a:focus-visible,
 
 .case-meta-values {
   display: flex;
+  min-width: 0;
   flex-wrap: wrap;
   gap: 6px;
   margin-top: 10px;
 }
 
 .case-meta-values span {
+  min-width: 0;
+  max-width: 100%;
   padding: 5px 7px;
   border: 1px solid var(--line);
   border-radius: 3px;
@@ -1336,6 +1373,7 @@ a:focus-visible,
   font-family: 'SFMono-Regular', Consolas, monospace;
   font-size: 8px;
   line-height: 1.5;
+  overflow-wrap: anywhere;
 }
 
 .case-disclaimer {
@@ -2203,6 +2241,21 @@ a:focus-visible,
     overflow-wrap: anywhere;
   }
 
+  .case-heading {
+    gap: 9px;
+  }
+
+  .project-icon {
+    width: 40px;
+    height: 40px;
+  }
+
+  .case-links {
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 8px;
+  }
+
   .repo-link {
     padding-top: 2px;
     font-size: 9px;
@@ -2210,9 +2263,15 @@ a:focus-visible,
   }
 
   .case-body {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 22px;
     padding: 18px 16px;
+  }
+
+  .case-body > *,
+  .case-implementation,
+  .code-window {
+    min-width: 0;
   }
 
   .case-narrative {
@@ -2220,9 +2279,13 @@ a:focus-visible,
   }
 
   .case-footer {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr);
     gap: 17px;
     padding: 16px;
+  }
+
+  .case-footer > * {
+    min-width: 0;
   }
 
   .case-disclaimer {
